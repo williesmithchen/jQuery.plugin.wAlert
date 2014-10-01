@@ -1,0 +1,54 @@
+@import 'wAlert';
+#wAlert_container
+{
+	////////////////////////////////////////////////////////////////
+	//iOS Style
+	////////////////////////////////////////////////////////////////
+	&.ios
+	{
+		background: $Gray90 !important;
+		.wAlert_message
+		{
+			@include border-radius(toRem($BaseSize/2) toRem($BaseSize/2) 0 0);
+			border-bottom:1px solid $BorderColorGray70 !important;
+			background: $Gray90 !important;
+			> .wAlert_content
+			{
+				text-align:center;
+				vertical-align: middle;
+			}
+		}
+		.wAlert_buttons
+		{
+			@include border-radius(0 0 toRem($BaseSize/2) toRem($BaseSize/2));
+			background: $Gray90 !important;
+			> li
+			{
+				color:$MostlyPureBlue !important;
+				border-color: $BorderColorGray70 !important;
+				background: $Gray90 !important;
+			}
+		}
+	}
+	////////////////////////////////////////////////////////////////
+	//Custom Style
+	////////////////////////////////////////////////////////////////
+	/*&.Custom
+	{
+		.wAlert_message
+		{
+			> .wAlert_content
+			{
+				&:only-child
+				{
+				}
+			}
+		}
+		.wAlert_buttons
+		{
+			> li
+			{
+			}
+		}
+	}*/
+}
