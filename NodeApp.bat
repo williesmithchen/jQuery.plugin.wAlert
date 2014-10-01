@@ -1,1 +1,1 @@
-node app.js
+supervisor app.js
