@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<!--HTML5-->
+<html lang="zh-Hant-TW" class="no-js">
     <head>
-        <meta charset="utf-8">
+        <!--UTF-8-->
+        <meta charset="utf-8" />
 
-        <link rel="shortcut icon" href="favicon.ico" />
+        <!--IE=edge:Auto select IE's Edge Mode & Set IE use Chrome Frame-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+        <!--Title-->
+        <title>jQuery Plugin - wAlert</title>
+
+        <!--Page Content-->
         <meta name="author" content="willie.smith.chen">
         <meta name="keywords" content="HTML,CSS,JavaScript,jQuery,Plugin,wAlert">
         <meta name="description" content="jQuery.Plugin.wAlert">
+
+        <!--og-->
+        <meta name="" content="" />
+
+        <!--Viewport-->
         <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
 
-        <!--
+        <!--favicon-->
+        <link rel="shortcut icon" href="favicon.ico" />
 
-        -->
-
-        <title>jQuery Plugin - wAlert</title>
-
+        <!--Head/CDN Script-->
         <!--jQuery-->
         <script src="//code.jquery.com/jquery-1.6.4.min.js"></script>
 
-        <!--Recommend the use of CSS Reset-->
-        <link rel="stylesheet" href="public/css/CSS_Reset.css">
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="./js/html5shiv/dist/html5shiv.min.js"></script>
+        <![endif]-->
+        <!--modernizr-->
+        <script src="./js/modernizr/modernizr.js"></script>
+
+        <!--CSS Reset-->
+        <link rel="stylesheet" href="./css/CSS_Reset.min.css">
 
         <!--CSS-->
-        <style type="text/css">
+        <style>
             html, body{
                 position: relative;
                 height: 100%;
@@ -96,13 +112,13 @@
 
 
         <!--jQuery.plugin.wAlert-->
-        <script type="text/javascript" src="public/js/jQuery.plugin.wAlert.js"></script>
-
-        <!--jQuery.plugin.wAlert-->
+        <script src="./js/jQuery.plugin.wAlert.js"></script>
         <!--[Default Version]-->
-        <!--<link rel="stylesheet" href="/css/wAlert.css">-->
+        <!--<link rel="stylesheet" href="./css/wAlert.min.css">-->
         <!--[iOS Version]-->
-        <link rel="stylesheet" href="public/css/wAlert.ios.css">
+        <link rel="stylesheet" href="./css/wAlert.ios.css">
+        <!--[Android Version]-->
+        <link rel="stylesheet" href="./css/wAlert.android.css">
 
 
 
@@ -123,7 +139,7 @@
 
             <section id="Description">
                 <h2>Description</h2>
-                <p>jQuery.Plugin.wAlert is best way to display a sample message, support not iOS drive.</p>
+                <p>jQuery.Plugin.wAlert is best way to display a sample message, support not iOS / Android drive.</p>
             </section>
 
             <section id="Browsers">
@@ -270,7 +286,7 @@
                 <p class="Description">&nbsp;&nbsp;&nbsp;&nbsp;repositionOnResize: true,</p>
                 <p class="Description">&nbsp;&nbsp;&nbsp;&nbsp;overlayOpacity: 0.25,</p>
                 <p class="Description">&nbsp;&nbsp;&nbsp;&nbsp;isPlaceholder: false,</p>
-                <p class="Description">&nbsp;&nbsp;&nbsp;&nbsp;customClass: "ios"</p>
+                <p class="Description">&nbsp;&nbsp;&nbsp;&nbsp;customClass: "ios" or "Android" ...</p>
                 <p class="Description">});</p>
                 <div class="RWD_Table">
                     <table class="RWD_Table">
