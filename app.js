@@ -4,7 +4,7 @@ var static = require('node-static'),
 	url = require('url'),
 	fs = require('fs');
 
-var fileServer = new static.Server('./public');
+var fileServer = new static.Server('./');
 var port = 8080;
 
 var app = http.createServer(function (req, res) {
