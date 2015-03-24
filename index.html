@@ -113,12 +113,10 @@
 
         <!--jQuery.plugin.wAlert-->
         <script src="./js/jQuery.plugin.wAlert.js"></script>
-        <!--[Default Version]-->
+        <!--[Normal Version]-->
         <!--<link rel="stylesheet" href="./css/wAlert.min.css">-->
-        <!--[iOS Version]-->
-        <link rel="stylesheet" href="./css/wAlert.ios.css">
-        <!--[Android Version]-->
-        <link rel="stylesheet" href="./css/wAlert.android.css">
+        <!--[iOS & Android Version]-->
+        <link rel="stylesheet" href="./css/wAlert.CustomStyle.css">
 
 
 
@@ -362,16 +360,18 @@
                 <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
             </section>
 
-            <h2>Donations</h2>
-            <section id="Donations">
-                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                    <input type="hidden" name="cmd" value="_s-xclick">
-                    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-">
-                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal － Donate！">
-                    <img alt="" border="0" src="https://www.paypalobjects.com/zh_TW/i/scr/pixel.gif" width="1" height="1">
-                </form>
-            </section>
+            <div>
+                <h2>Donations</h2>
+                <section id="Donations">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+    ">
+                        <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal － Donate！">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/zh_TW/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </section>
+            </div>
         </main>
 
         <footer>&copy;2014 williesmithchen All rights reserved.</footer>
