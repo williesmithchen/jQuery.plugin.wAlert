@@ -1,20 +1,17 @@
 ﻿/*
 jQuery.wPlugin.[wAlert]
-2014.9.18
+2015.3.24
 
 Design:Willie.Smith.Chen
 
 The MIT License (MIT)
-
 Copyright (c) 2014 williesmithchen
-
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-; (function ($) {
+"use strict";
+(function ($) {
     //wAlert Method
     $.wAlert = function (opt) {
         //Base.
@@ -62,8 +59,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             //Window's width/2 & height/2 - alert width/2 & height/2 + Offset = alert top & left Offset
             var top = ( ($(window).height() / 2) - (obj.wAlert_container.height() / 2) ) + vOffset;
             var left = ( ($(window).width() / 2) - (obj.wAlert_container.width() / 2) ) + hOffset;
-            if (top < 0) top = 0;
-            if (left < 0) left = 0;
+            if (top < 0) {top = 0;}
+            if (left < 0) {left = 0;}
             //Position
             var position = ($(document).height() <= $("body").height()) ? "absolute" : "fixed";
             //Reset Css
@@ -77,7 +74,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         self.maintainPosition = function (_switch) {
             if (!!$.wAlert.options.get("autoResize")) {
                 var maintainPosition = function () {
-                    self.reposition($.wAlert.options)
+                    self.reposition($.wAlert.options);
                 };
                 //resize or orientationchange will Auto Resize
                 if (!!_switch) {
@@ -97,7 +94,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             //if overlay not exists then Create
             var _overlay = self._overlay($.wAlert.options);
             //wAlert_container add Custom Class
-            if ($.wAlert.dialogClass) _overlay.wAlert_container.addClass($.wAlert.dialogClass);
+            if ($.wAlert.dialogClass) {_overlay.wAlert_container.addClass($.wAlert.dialogClass);}
             _overlay.wAlert_container.addClass(type);
             //Title Display
             var _title = $(".wAlert_message > .wAlert_title", _overlay.wAlert_container);
@@ -113,9 +110,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             var _Ok = $("<li id='wAlert_Ok'></li>").text($.wAlert.okButton);
             //Prompt
             var _Prompt = $("<input type='text' size='30' id='wAlert_Prompt' value='' />");
-            !!$.wAlert.options.get("isPlaceholder") ? _Prompt.attr("placeholder", value).val("") : !!value ? _Prompt.val(value) : _Prompt.val("");
+            if(!!$.wAlert.options.get("isPlaceholder")) {
+                _Prompt.attr("placeholder", value).val("");
+            }else{
+                if(!!value){
+                    _Prompt.val(value);
+                }else{
+                    _Prompt.val("");
+                }
+            }
             _Prompt.bind("keyup.wAlert", function(event) {
-                if (event.which == 13) _Ok.trigger('click');
+                if (event.which === 13) { _Ok.trigger('click'); }
                 return false;
             });
             //Clear
@@ -125,7 +130,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             $("#wAlert_container > .wAlert_buttons").prepend(_Ok);
             _Ok.bind("click.wAlert", function () {
                 var _value = (type === "prompt") ? $("#wAlert_Prompt").val() === "" ? true : $("#wAlert_Prompt").val() : true;
-                !!callback && callback(_value);
+                if(!!callback) { callback(_value); }
                 self._hide(true);
             });
             //Add Cancel Button
@@ -133,7 +138,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 $("#wAlert_container > .wAlert_buttons").prepend(_Cancel);
                 _Cancel.bind("click.wAlert", function () {
                     var _value = (type === "prompt") ? $("#wAlert_Prompt").val() === "" ? false : $("#wAlert_Prompt").val() : false;
-                    !!callback && callback(_value);
+                    if(!!callback) { callback(_value); }
                     self._hide(true);
                 });
             }
@@ -158,7 +163,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             $("body > #wAlert_container").remove();
             $("body > .overlay").removeClass("overlay_show").removeAttr("style");
             //Auto Reset Dialog Class
-            if (autoResetDialogClass) $.wAlert.dialogClass = null;
+            if (autoResetDialogClass) {$.wAlert.dialogClass = null;}
         };
 
         self._getFunction = function (args) {
@@ -169,7 +174,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 }
             }
             return null;
-        }
+        };
 
         self.tmv = [];
         self._getStrings = function (args) {
@@ -180,21 +185,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     self.tmv.push(args[i].toString());
                 }
             }
-        }
+        };
 
         //[Public methods]
         //No Header
-        window.wMsg = function wMsg(message, title, callback) {
+        window.wMsg = function wMsg() {
             self._getStrings(arguments);
             self._show(self.tmv.length >= 2 ? self.tmv[1] : null, self.tmv.length >= 1 ? self.tmv[0] : null, null, 'msg', self._getFunction(arguments));
             self.tmv = [];
         };
-        window.wAlert = function wAlert(message, title, callback) {
+        window.wAlert = function wAlert() {
             self._getStrings(arguments);
             self._show(self.tmv.length >= 2 ? self.tmv[1] : 'Alert', self.tmv.length >= 1 ? self.tmv[0] : null, null, 'alert', self._getFunction(arguments));
             self.tmv = [];
         };
-        window.wConfirm = function wConfirm(message, title, callback) {
+        window.wConfirm = function wConfirm() {
             self._getStrings(arguments);
             self._show(self.tmv.length >= 2 ? self.tmv[1] : 'Confirm', self.tmv.length >= 1 ? self.tmv[0] : null, null, 'confirm', self._getFunction(arguments));
             self.tmv = [];
@@ -211,7 +216,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             $.wAlert.options = (function () {
                 var privateopt = $.extend({}, $.wAlert.defaultOptions, options);
                 return {
-                    setisPlaceholder: function(bool) {privateopt["isPlaceholder"] = !!bool},
+                    setisPlaceholder: function(bool) {
+                        if(!!bool){
+                            privateopt.isPlaceholder = true;
+                        }else{
+                            privateopt.isPlaceholder = false;
+                        }
+                    },
                     get: function (name) { return privateopt[name]; }
                 };
             })();
@@ -223,8 +234,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     $.wAlert.okButton = ' OK ';             //Ok Button Default Text
     $.wAlert.cancelButton = ' Cancel ';     //Cancel Button Default Text
     $.wAlert.defaultOptions = {
-        zIndex: 10000,                       //Default z-index 10000
-        overlayOpacity: .25,                //overlay(mask) Background Opacity
+        zIndex: 10000,                      //Default z-index 10000
+        overlayOpacity: 0.25,               //overlay(mask) Background Opacity
 
         vOffset: 0,                         //Vertical Offset
         hOffset: 0,                         //Horizontal Offset
@@ -232,7 +243,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         autoResize: true,                   //Auto Resize
         isPlaceholder: false,               //wPrompt's value is Placeholder?
 
-        customClass: "ios"                  //Default Style
+        customClass: "android"              //Default Style
     };
 
     //wAlert Auto Exe
@@ -241,9 +252,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     //wAlert Auto Exe
     $(function() {
         try {
-            !!$.wAlert.autoExe && $.wAlert();
+            if(!!$.wAlert.autoExe) {
+                $.wAlert();
+            }
         } catch (err) {
-            !!console && console.warn(err); console.log("Auto Exe jQuery.plugin.wAlert Failed.");
+            if(!!console){
+                console.warn(err);
+                console.log("Auto Exe jQuery.plugin.wAlert Failed.");
+            }
         }
     });
 })(jQuery);
