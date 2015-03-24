@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<!--HTML5-->
+<html lang="zh-Hant-TW" class="no-js">
     <head>
-        <meta charset="utf-8">
+        <!--UTF-8-->
+        <meta charset="utf-8" />
 
-        <link rel="shortcut icon" href="favicon.ico" />
+        <!--IE=edge:Auto select IE's Edge Mode & Set IE use Chrome Frame-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+        <!--Title-->
+        <title>jQuery Plugin - wAlert</title>
+
+        <!--Page Content-->
         <meta name="author" content="willie.smith.chen">
         <meta name="keywords" content="HTML,CSS,JavaScript,jQuery,Plugin,wAlert">
         <meta name="description" content="jQuery.Plugin.wAlert">
+
+        <!--og-->
+        <meta name="" content="" />
+
+        <!--Viewport-->
         <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1.0,user-scalable=no">
 
-        <!--
+        <!--favicon-->
+        <link rel="shortcut icon" href="favicon.ico" />
 
-        -->
+        <!--Head/CDN Script-->
 
-        <title>jQuery Plugin - wAlert</title>
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="./js/html5shiv/dist/html5shiv.min.js"></script>
+        <![endif]-->
 
-        <!--jQuery-->
+        <!--jQuery CDN-->
         <script src="//code.jquery.com/jquery-1.6.4.min.js"></script>
 
-        <!--Recommend the use of CSS Reset-->
-        <link rel="stylesheet" href="public/css/CSS_Reset.css">
+        <!--modernizr-->
+        <script type="text/javascript" src="./js/shufflejs/dist/modernizr.custom.min.js"></script>
 
         <!--CSS-->
+
+        <!--CSS Reset-->
+        <link rel="stylesheet" href="public/css/CSS_Reset.css">
+
+        <!--wAlert Single Page Css-->
         <style type="text/css">
             html, body{
                 position: relative;
@@ -93,14 +113,19 @@
             .callback{color:Green;}
         </style>
 
+
+
         <!--jQuery.plugin.wAlert-->
         <script type="text/javascript" src="public/js/jQuery.plugin.wAlert.js"></script>
 
-        <!--jQuery.plugin.wAlert CSS[Default]-->
+        <!--jQuery.plugin.wAlert-->
+        <!--[Default Version]-->
         <!--<link rel="stylesheet" href="/css/wAlert.css">-->
-
-        <!--jQuery.plugin.wAlert CSS[ios]-->
+        <!--[iOS Version]-->
         <link rel="stylesheet" href="public/css/wAlert.ios.css">
+
+
+
     </head>
     <body>
         <header>
@@ -109,20 +134,20 @@
         </header>
 
         <main>
-            <h2>Requirements</h2>
             <section id="Requirements">
+                <h2>Requirements</h2>
                 <ol>
                     <li>jQuery 1.6.4 +</li>
                 </ol>
             </section>
 
-            <h2>Description</h2>
             <section id="Description">
+                <h2>Description</h2>
                 <p>jQuery.Plugin.wAlert is best way to display a sample message, support not iOS drive.</p>
             </section>
 
-            <h2>Browsers</h2>
             <section id="Browsers">
+                <h2>Browsers</h2>
                 <ol class="Browser">
                     <li>Chrome: 37+ </li>
                     <li>Safari: 7+</li>
@@ -132,8 +157,8 @@
                 </ol>
             </section>
 
-            <h2>Demo & API Document</h2>
             <section id="API">
+                <h2>Demo & API Document</h2>
                 <h3>API：</h3>
                 <h4>Input : [Method] : (Typeof)</h4>
                 <em>*:Requirement</em>
