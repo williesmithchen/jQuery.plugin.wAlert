@@ -28,6 +28,25 @@
 			}
 		}
 	}
+	/*Android Style*/
+	&.android
+	{
+		.wAlert_message
+		{
+			> .wAlert_content
+			{
+				&:only-child
+				{
+				}
+			}
+		}
+		.wAlert_buttons
+		{
+			> li
+			{
+			}
+		}
+	}
 	/*Custom Style*/
 	/*&.Custom
 	{
