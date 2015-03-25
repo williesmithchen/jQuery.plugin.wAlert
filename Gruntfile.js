@@ -1,6 +1,25 @@
 "use strict";
 module.exports = function(grunt) {
 
+  // [Load Task Ver.2]
+  // Foreach Load Task
+  [
+    // Load Task Watch
+    'grunt-contrib-watch',
+    // Load Task CSS
+    'grunt-contrib-compass',
+    'grunt-contrib-cssmin',
+    // Load Task JS
+    'grunt-contrib-jshint',
+    'grunt-contrib-uglify',
+    // Load Task Combine File
+    'grunt-contrib-concat',
+    // Server Restart
+    'grunt-express-server'
+  ].forEach(function(task){
+    grunt.loadNpmTasks(task);
+  });
+
   // Project configuration.
   grunt.initConfig({
     /*Setting*/
@@ -82,6 +101,17 @@ module.exports = function(grunt) {
         dest: 'public/css/<%= pkg.name %>.<%= pkg.version %>.min.css',
       }
     },*/
+    /*Task:express Server Restart*/
+    express:{
+      options:{
+        script: '<%= pkg.main %>'
+      },
+      dev:{
+        options:{
+          script: '<%= pkg.main %>'
+        }
+      }
+    },
     /*Watch*/
     min:{
       options: {
@@ -102,10 +132,22 @@ module.exports = function(grunt) {
     },
     watch: {
       options: {
+        /*forever:永遠運作(def:true)*/
+        /*預設狀況下watch會阻止grunt.fatal和grunt.warn跳離執行中的程序，若你有特殊需求必須跳離，請設為false*/
+        forever: true,
+        /*livereload*/
+        livereload: true,
+        /*任務完成時輸出訊息*/
         dateFormat: function(time) {
           grunt.log.writeln('The watch finished in ' + time + 'ms at' + grunt.template.today("yyyy-mm-dd TT hh:MM:ss"));
           grunt.log.writeln('Waiting for more changes...');
         },
+        /*atBegin:啟動時自動觸發(def:false)*/
+        /*啟動時先觸發一次對應的各子任務(task)*/
+        atBegin: false,
+        /*reload觸發間隔*/
+        /*interval: 100,*/
+        /*task產生的檔案是否納入監測並套用相對應的task任務*/
         spawn: false
       },
       scss: {
@@ -116,6 +158,10 @@ module.exports = function(grunt) {
         files: ['private/js/*.js', 'private/css/!*.min.js'],
         tasks: ['jshint', 'uglify']
       },
+      express: {
+        files: ['*.*','**/*.*'],
+        tasks: ['express']
+      },
       GruntfileJS: {
         files: ['Gruntfile.js'],
         tasks: ['jshint']
@@ -123,16 +169,17 @@ module.exports = function(grunt) {
     }
   });
 
+  // [Load Task Ver.1]
   // Load Task Watch
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  //grunt.loadNpmTasks('grunt-contrib-watch');
   // Load Task CSS
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  //grunt.loadNpmTasks('grunt-contrib-compass');
+  //grunt.loadNpmTasks('grunt-contrib-cssmin');
   // Load Task JS
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  //grunt.loadNpmTasks('grunt-contrib-jshint');
+  //grunt.loadNpmTasks('grunt-contrib-uglify');
   // Load Task Combine File
-  grunt.loadNpmTasks('grunt-contrib-concat');
+  //grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Default task(s).
   //grunt test
@@ -140,9 +187,7 @@ module.exports = function(grunt) {
   grunt.registerTask('jstest', ['jshint']);
   grunt.registerTask('test', ['compass','jshint']);
   //grunt listen
-  grunt.registerTask('listen', ['watch']);
-  //grunt min
-  grunt.registerTask('min', ['min']);
+  grunt.registerTask('listen', ['express','watch']);
   //grunt
   grunt.registerTask('default', [
     'compass',
