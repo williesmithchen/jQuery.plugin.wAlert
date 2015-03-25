@@ -1,10 +1,17 @@
 {
   "name": "jQuery.plugin.wAlert",
   "version": "0.1.0",
+  "homepage": "http://williesmithchen.github.io/jQuery.plugin.wAlert/",
   "authors": [
     "williesmithchen"
   ],
-  "main": "app.js",
+  "description": "jQuery.Plugin.wAlert is best way to display a sample message, support not iOS/Android drive.",
+  "keywords": [
+    "jQuery",
+    "Plugin",
+    "alert",
+    "wAlert"
+  ],
   "license": "MIT",
   "ignore": [
     "**/.*",
