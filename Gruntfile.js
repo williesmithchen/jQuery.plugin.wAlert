@@ -14,6 +14,8 @@ module.exports = function(grunt) {
     'grunt-contrib-uglify',
     // Load Task Combine File
     'grunt-contrib-concat',
+    // Load Copy Files
+    'grunt-contrib-copy',
     // Server Restart
     'grunt-express-server'
   ].forEach(function(task){
@@ -42,13 +44,13 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           /*dev 目錄*/
-          cwd: 'public/css/',
+          cwd: 'src/public/css/',
           /*所有css檔 但排除min.css*/
           src: ['*.css', '!*.min.css'],
           /*判斷檔名規則使用最後一個dot*/
           extDot: 'last',
           /*output 目錄*/
-          dest: 'public/css/',
+          dest: 'src/public/css/',
           /*輸出副檔名*/
           ext: '.min.css'
         }]
@@ -63,7 +65,7 @@ module.exports = function(grunt) {
         files: {
           src: ['Gruntfile.js',
             /*所有js檔 但排除min.js*/
-            'private/js/<%= pkg.name %>.js', 'private/js/!*.min.js'
+            'src/private/js/<%= pkg.name %>.js', 'src/private/js/!*.min.js'
           ],
           extDot: 'last'
         }
@@ -78,10 +80,10 @@ module.exports = function(grunt) {
       build: {
         files: [{
           expand: true,
-          cwd: 'private/js/',
+          cwd: 'src/private/js/',
           src: ['*.js', '!*.min.js'],
           extDot: 'last',
-          dest: 'public/js/',
+          dest: 'src/public/js/',
           ext: '.min.js'
         }]
       }
@@ -93,17 +95,17 @@ module.exports = function(grunt) {
         separator: ';',
       },
       js: {
-        src: ['private/js/<%= pkg.name %>.js'],
-        dest: 'public/js/<%= pkg.name %>.<%= pkg.version %>.min.js',
+        src: ['src/private/js/<%= pkg.name %>.js'],
+        dest: 'src/public/js/<%= pkg.name %>.<%= pkg.version %>.min.js',
       },
       css: {
-        src: ['private/css/<%= pkg.name %>.css'],
-        dest: 'public/css/<%= pkg.name %>.<%= pkg.version %>.min.css',
+        src: ['src/private/css/<%= pkg.name %>.css'],
+        dest: 'src/public/css/<%= pkg.name %>.<%= pkg.version %>.min.css',
       }
     },*/
     /*Task:express Server Restart*/
-    express:{
-      options:{
+    express: {
+      options: {
         script: '<%= pkg.main %>'
       },
       dev:{
@@ -113,7 +115,7 @@ module.exports = function(grunt) {
       }
     },
     /*Watch*/
-    min:{
+    min: {
       options: {
         dateFormat: function(time) {
           grunt.log.writeln('The watch finished in ' + time + 'ms at' + grunt.template.today("yyyy-mm-dd TT hh:MM:ss"));
@@ -122,12 +124,21 @@ module.exports = function(grunt) {
         spawn: false
       },
       cssmin: {
-        files: ['public/css/*.css', 'public/css/!*.min.css'],
+        files: ['src/public/css/*.css', 'src/public/css/!*.min.css'],
         tasks: ['cssmin']
       },
       jsmin: {
-        files: ['public/js/*.js', 'public/css/!*.min.js'],
+        files: ['src/public/js/*.js', 'src/public/css/!*.min.js'],
         tasks: ['uglify']
+      }
+    },
+    /*Copy*/
+    copy: {
+      main: {
+        files:[
+          {expand: true, cwd: 'src/public/css/', src: ['*.min.css'], dest: 'dist/css/'},
+          {expand: true, cwd: 'src/public/js/', src: ['jQuery.plugin.wAlert.min.js'], dest: 'dist/js/'}
+        ]
       }
     },
     watch: {
@@ -151,16 +162,16 @@ module.exports = function(grunt) {
         spawn: false
       },
       scss: {
-        files: ['private/scss/*.scss'],
+        files: ['src/private/scss/*.scss'],
         tasks: ['compass', 'cssmin']
       },
       js: {
-        files: ['private/js/*.js', 'private/css/!*.min.js'],
+        files: ['src/private/js/*.js', 'src/private/css/!*.min.js'],
         tasks: ['jshint', 'uglify']
       },
       express: {
         files: ['*.*','**/*.*'],
-        tasks: ['express']
+        tasks: ['express', 'copy']
       },
       GruntfileJS: {
         files: ['Gruntfile.js'],
@@ -168,18 +179,6 @@ module.exports = function(grunt) {
       }
     }
   });
-
-  // [Load Task Ver.1]
-  // Load Task Watch
-  //grunt.loadNpmTasks('grunt-contrib-watch');
-  // Load Task CSS
-  //grunt.loadNpmTasks('grunt-contrib-compass');
-  //grunt.loadNpmTasks('grunt-contrib-cssmin');
-  // Load Task JS
-  //grunt.loadNpmTasks('grunt-contrib-jshint');
-  //grunt.loadNpmTasks('grunt-contrib-uglify');
-  // Load Task Combine File
-  //grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Default task(s).
   //grunt test

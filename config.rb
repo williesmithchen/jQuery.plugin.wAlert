@@ -10,29 +10,29 @@ environment = :development
 http_path = "/"
 
 # Project Setting
-project_path = "private/"
+project_path = "src/private/"
 
 # Set this to the root of your project when deployed:
 css_dir						=	"css"
-css_path					=	"public/css"
+css_path					=	"src/public/css"
 http_stylesheets_path		=	"css"
 
 sass_dir					=	"scss"
 # sass_path					=	"scss"
 
 images_dir					=	"images"
-images_path					=	"public/images"
+images_path					=	"src/public/images"
 http_images_path			=	"images"
 # generated_images_dir		=	""
 # generated_images_path		=	""
 # http_generated_images_path=	""
 
 javascripts_dir				=	"js"
-javascripts_path			=	"public/js"
+javascripts_path			=	"src/public/js"
 http_javascripts_path		=	"js"
 
 fonts_dir					=	"scss/fonts"
-fonts_path					=	"public/css/fonts"
+fonts_path					=	"src/public/css/fonts"
 #http_fonts_dir				=	""
 #http_fonts_path			=	""
 

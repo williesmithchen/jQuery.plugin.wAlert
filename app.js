@@ -91,7 +91,7 @@
             /*Express Create Server*/
             self.app = express.createServer();
             /*Static Path*/
-            self.app.use(express.static(path.join(__dirname, 'public')));
+            self.app.use(express.static(path.join(__dirname, 'src/public')));
             /*Add handlers for the app (from the routes).*/
             for (var r in self.routes) {
                 self.app.get(r, self.routes[r]);
