@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     cssmin: {
       build: {
         options: {
-          banner: '/*\n<%= pkg.licenseDescription %>\n<%= pkg.name %>.min.css <%= pkg.name %> Ver<%= pkg.version %> Build@<%= grunt.template.today("yyyy-mm-dd TT hh:MM:ss") %> */',
+          banner: '/*\n<%= pkg.licenseDescription %>\n<%= pkg.name %>.min.css by [<%= pkg.name %>] \nVersion<%= pkg.version %> \nBuild@<%= grunt.template.today("yyyy-mm-dd TT hh:MM:ss") %> */',
           report: 'gzip'
         },
         files: [{
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
     /*JavaScript Minify*/
     uglify: {
       options: {
-        banner: '/*\n<%= pkg.licenseDescription %>\n<%= pkg.name %>.min.js <%= pkg.name %> Ver<%= pkg.version %> Build@<%= grunt.template.today("yyyy-mm-dd TT hh:MM:ss") %> */\n',
+        banner: '/*\n<%= pkg.licenseDescription %>\n<%= pkg.name %>.min.js by [<%= pkg.name %>] \nVersion<%= pkg.version %> \nBuild@<%= grunt.template.today("yyyy-mm-dd TT hh:MM:ss") %> */\n',
         //sourceMap: true
       },
       build: {
