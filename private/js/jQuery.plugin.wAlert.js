@@ -243,7 +243,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         autoResize: true,                   //Auto Resize
         isPlaceholder: false,               //wPrompt's value is Placeholder?
 
-        customClass: "android"              //Default Style
+        customClass: "ios"                  //Default Style
+        //customClass: "android"            //Default Style
     };
 
     //wAlert Auto Exe
@@ -263,3 +264,4 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         }
     });
 })(jQuery);
+

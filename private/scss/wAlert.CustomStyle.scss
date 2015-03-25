@@ -31,19 +31,72 @@
 	/*Android Style*/
 	&.android
 	{
+		$androidTitleColor:#33B5E5;
+		$androidColor: #707070;
+		$androidBGColor: #DCDCDC;
+		$androidinputBorderColor: #4285F4;
+		@include box-shadow($androidColor 0 0 toRem($BaseSize*1.25));
+		color: $androidColor;
 		.wAlert_message
 		{
+			@include border-radius(toRem($BaseSize/4) toRem($BaseSize/4) 0 0);
+			position: relative;
+			border-bottom-color: $androidBGColor;
+			text-align: left;
+			padding:0;
+			> .wAlert_title
+			{
+				color: $androidTitleColor;
+				border-bottom:1px solid currentColor;
+				padding:1em;
+				margin: 0;
+			}
 			> .wAlert_content
 			{
+				padding:1em;
+				margin-bottom: 1.5em;
+				/*wMsg*/
 				&:only-child
 				{
+					padding:1.5em 1em 1.8em 1em;
+					margin-top: 0;
 				}
+			}
+			> #wAlert_Prompt{
+				width: 94%;
+				outline: none;
+				position: absolute;
+				left:3%;
+				right:3%;
+				bottom: 0;
+				border-width:0 0 1px 0;
+				border-bottom-color: $androidinputBorderColor;
+				margin: .5em auto;
 			}
 		}
 		.wAlert_buttons
 		{
-			> li
+			@include border-radius(0 0 toRem($BaseSize/4) toRem($BaseSize/4));
+			color: $Black;
+			>li
 			{
+				&:hover, &:active
+				{
+					background-color: $androidBGColor;
+				}
+				&:first-child:last-child
+				{
+					border-radius: 0 0 toRem($BaseSize/4) toRem($BaseSize/4);
+				}
+				&:first-child
+				{
+					border-radius: 0 0 0 toRem($BaseSize/4);
+				}
+				&:last-child
+				{
+					border-right: none;
+					border-radius: 0 0 toRem($BaseSize/4) 0;
+				}
 			}
 		}
 	}
