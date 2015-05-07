@@ -35,7 +35,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     "<header class='wAlert_title'></header>" +
                     "<p class='wAlert_content'></p>" +
                 "</div>" +
-                "<ul class='wAlert_buttons'>" +
+                "<ul class='wAlert_buttons" + ($.wAlert.options.get("flex") ? " flex" : "" ) + "'>" +
                 "</ul>" +
             "</div>").css("zIndex", zIndex);
             if (!$("body > #wAlert_container").length) {
@@ -235,7 +235,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     $.wAlert.cancelButton = ' Cancel ';     //Cancel Button Default Text
     $.wAlert.defaultOptions = {
         zIndex: 10000,                      //Default z-index 10000
-        overlayOpacity: 0.25,               //overlay(mask) Background Opacity
+        overlayOpacity: 0.25,               //Overlay(mask) Background Opacity
+
+        flex: false,                         //CSS3 Flex Switch Default:false For Support ie9.
 
         vOffset: 0,                         //Vertical Offset
         hOffset: 0,                         //Horizontal Offset
@@ -244,7 +246,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         isPlaceholder: false,               //wPrompt's value is Placeholder?
 
         customClass: "ios"                  //Default Style
-        //customClass: "android"              //Default Style
+        // customClass: "android"              //Default Style
     };
 
     //wAlert Auto Exe

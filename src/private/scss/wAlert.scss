@@ -96,6 +96,7 @@ body
 		top: 0;
 		left: 0;
 
+		width:toRem($nAlert_container_width);
 		min-width:toRem($nAlert_container_width);
 		min-height:toRem($nAlert_container_height);
 
@@ -156,21 +157,34 @@ body
 
 		.wAlert_buttons
 		{
-			@include experimental-value("display","flex");
+			//for Css3 display flex support
+			&.flex
+			{
+				@include experimental-value("display","flex");
+				width: auto;
+				> li
+				{
+					@include experimental("flex","1");
+					display: inline-block;
+					width:100%;
+				}
+			}
+
+			@include experimental-value("display","table");
+			table-layout: fixed;
+			width: 100%;
 
 			min-height: toRem($iConHeight);
 			background: $White;
 
 			> li
 			{
-				@include experimental("flex","1");
+				@include experimental-value("display","table-cell");
+
 				@include box-sizing(border-box);
 
 				cursor: pointer;
 
-				display: inline-block;
-
-				width:100%;
 				min-height: toRem($iConHeight);
 				line-height: toRem($iConHeight);
 
