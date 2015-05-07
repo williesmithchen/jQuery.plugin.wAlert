@@ -1,6 +1,6 @@
 {
   "name": "jQuery.plugin.wAlert",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "jQuery.Plugin.wAlert is best way to display a sample message, support not iOS/Android drive.",
   "main": "app.js",
   "engines": {
