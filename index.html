@@ -216,6 +216,7 @@
                     <script>
                         function callbackresult(result) {
                             $('#callbackresult').text(result);
+                            ga && ga('send', 'event', 'Demo', 'callback' , (!!callbackeventname?callbackeventname:"Error"));
                         }
                     </script>
                     <p class="buttons">
@@ -239,6 +240,7 @@
                     <script>
                         function wPrompt_def_val_callback(result) {
                             $("#wdvcallback").text(result);
+                            ga && ga('send', 'event', 'Demo', 'callback' , (!!callbackeventname?callbackeventname:"Error"));
                         }
                     </script>
                     <p class="buttons">
@@ -256,6 +258,8 @@
                         function wPrompt_def_val_callback2(result) {
                             $("#wdvcallback2").text(result);
                             $.wAlert.options.setisPlaceholder(false);
+                            ga && ga('send', 'event', 'Demo', 'callback' , (!!callbackeventname?callbackeventname:"Error"));
+                            ga && ga('send', 'event', 'Demo', 'callback' , 'setisPlaceholder');
                         }
                     </script>
                     <p class="buttons">
@@ -391,6 +395,21 @@
         <footer>&copy;2014 williesmithchen All rights reserved.</footer>
 
         <!--GA-->
-        <script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b;a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create","UA-25055552-7","auto");ga("send","pageview");</script>
+        <script>(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b;a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)};a[b].l=1*new Date;c=e.createElement(f);d=e.getElementsByTagName(f)[0];c.async=1;c.src=g;d.parentNode.insertBefore(c,d)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");
+            ga("create","UA-25055552-7","auto");
+            ga('set', 'forceSSL', true);
+            ga("send","pageview", {
+                siteSpeedSampleRate: 100,
+                page: '/jQuery.plugin.wAlert',
+                title: 'jQuery.plugin.wAlert-index'
+            });
+            var callbackeventname;
+            $(function(){
+                $("button").click(function(){
+                    callbackeventname = $(this).attr('class');
+                    ga('send', 'event', 'Demo', 'click', '' + callbackeventname);
+                });
+            })
+        </script>
     </body>
 </html>
