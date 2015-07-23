@@ -66,7 +66,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             var position = ($(document).height() <= $("body").height()) ? "absolute" : "fixed";
             //Reset Css
             obj.overlay.height($(document).height());
-            obj.wAlert_container.css({ "position": position, "top": top, "left": left });
+            var fixed = typeof(option.get("fixed")) === 'boolean' ? option.get("fixed") : false;
+            obj.wAlert_container.css({ "position": (fixed ? "fixed" : position), "top": top, "left": left });
             //Reset Overlay Height
             obj.overlay.height($(document).height());
         };
@@ -238,7 +239,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         zIndex: 10000,                      //Default z-index 10000
         overlayOpacity: 0.25,               //Overlay(mask) Background Opacity
 
-        flex: false,                         //CSS3 Flex Switch Default:false For Support ie9.
+        fixed: true,                        //Force Fixed Alert?
+        flex: false,                        //CSS3 Flex Switch Default:false For Support ie9.
 
         vOffset: 0,                         //Vertical Offset
         hOffset: 0,                         //Horizontal Offset
