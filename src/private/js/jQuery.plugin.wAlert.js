@@ -23,12 +23,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             //zIndex
             var zIndex = typeof(option.get("zIndex")) === 'number' ? parseInt(option.get("zIndex"), 10) : 10000 ;
             //if overlay not exists then Create
-            var overlay = $("<div class='overlay'>").css("zIndex", zIndex - 1);
+            var overlay = $("<div class='overlay'>");
             if (!$("body > .overlay").length) {
                 $("body").prepend(overlay);
             } else {
                 overlay = $("body > .overlay");
             }
+            overlay.css("zIndex", zIndex - 1);
             //if wAlert_container not exists then Create
             var wAlert_container = $("<div id='wAlert_container'>" +
                 "<div class='wAlert_message'>" +
