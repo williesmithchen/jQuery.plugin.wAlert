@@ -177,10 +177,10 @@
                     <p>Example:</p>
                     <p class="Description">wMsg('Demo wMsg');</p>
                     <p class="buttons">
-                        <button class="wMsg" onClick="wMsg('Demo wMsg');">wMsg</button>
-                        <button class="wAlert" onClick="wAlert('Demo wAlert');">wAlert</button>
-                        <button class="wConfirm" onClick="wConfirm('Demo wConfirm');">wConfirm</button>
-                        <button class="wPrompt" onClick="wPrompt('Demo wPrompt');">wPrompt</button>
+                        <button class="wMsg" onClick="window.callbackeventname='wMsg';wMsg('Demo wMsg');">wMsg</button>
+                        <button class="wAlert" onClick="window.callbackeventname='wAlert';wAlert('Demo wAlert');">wAlert</button>
+                        <button class="wConfirm" onClick="window.callbackeventname='wConfirm';wConfirm('Demo wConfirm');">wConfirm</button>
+                        <button class="wPrompt" onClick="window.callbackeventname='wPrompt';wPrompt('Demo wPrompt');">wPrompt</button>
                     </p>
                 </div>
 
@@ -189,10 +189,10 @@
                     <p>Example:</p>
                     <p class="Description">wAlert('Demo wAlert', 'Custom Title');</p>
                     <p class="buttons">
-                        <button class="wMsg" onClick="wMsg('Demo wMsg', 'Custom Title');">wMsg</button>
-                        <button class="wAlert" onClick="wAlert('Demo wAlert', 'Custom Title');">wAlert</button>
-                        <button class="wConfirm" onClick="wConfirm('Demo wConfirm', 'Custom Title');">wConfirm</button>
-                        <button class="wPrompt" onClick="wPrompt('Demo wPrompt', 'Custom Title');">wPrompt</button>
+                        <button class="wMsg" onClick="window.callbackeventname='wMsg';wMsg('Demo wMsg', 'Custom Title');">wMsg</button>
+                        <button class="wAlert" onClick="window.callbackeventname='wAlert';wAlert('Demo wAlert', 'Custom Title');">wAlert</button>
+                        <button class="wConfirm" onClick="window.callbackeventname='wConfirm';wConfirm('Demo wConfirm', 'Custom Title');">wConfirm</button>
+                        <button class="wPrompt" onClick="window.callbackeventname='wPrompt';wPrompt('Demo wPrompt', 'Custom Title');">wPrompt</button>
                     </p>
                 </div>
 
@@ -216,14 +216,14 @@
                     <script>
                         function callbackresult(result) {
                             $('#callbackresult').text(result);
-                            ga && ga('send', 'event', 'Demo', 'callback' , (!!callbackeventname?callbackeventname:"Error"));
+                            ga && ga('send', 'event', 'Demo', 'callback' , (!!window.callbackeventname?window.callbackeventname:"Error"));
                         }
                     </script>
                     <p class="buttons">
-                        <button class="wMsg" onClick="wMsg('Demo wMsg Callback', 'Title', callbackresult );">wMsg</button>
-                        <button class="wAlert" onClick="wAlert('Demo wAlert Callback', 'Title', callbackresult );">wAlert</button>
-                        <button class="wConfirm" onClick="wConfirm('Demo wConfirm Callback', 'Title', callbackresult );">wConfirm</button>
-                        <button class="wPrompt" onClick="wPrompt('Demo wPrompt Callback', 'Title', callbackresult);">wPrompt</button>
+                        <button class="wMsg" onClick="window.callbackeventname='wMsg';wMsg('Demo wMsg Callback', 'Title', callbackresult );">wMsg</button>
+                        <button class="wAlert" onClick="window.callbackeventname='wAlert';wAlert('Demo wAlert Callback', 'Title', callbackresult );">wAlert</button>
+                        <button class="wConfirm" onClick="window.callbackeventname='wConfirm';wConfirm('Demo wConfirm Callback', 'Title', callbackresult );">wConfirm</button>
+                        <button class="wPrompt" onClick="window.callbackeventname='wPrompt';wPrompt('Demo wPrompt Callback', 'Title', callbackresult);">wPrompt</button>
                     </p>
                     <p>Callback Result:<span id="callbackresult" class="Description callback"></span></p>
                 </div>
@@ -240,11 +240,12 @@
                     <script>
                         function wPrompt_def_val_callback(result) {
                             $("#wdvcallback").text(result);
-                            ga && ga('send', 'event', 'Demo', 'callback' , (!!callbackeventname?callbackeventname:"Error"));
+                            ga && ga('send', 'event', 'Demo', 'callback' , (!!window.callbackeventname?window.callbackeventname:"Error"));
+                            ga && ga('send', 'event', 'Demo', 'callback' , 'setisPlaceholder-false');
                         }
                     </script>
                     <p class="buttons">
-                        <button class="wPrompt" onClick="wPrompt('Message', wPrompt_def_val_callback, 'Title', 'Default Value');">wPrompt</button>
+                        <button class="wPrompt" onClick="callbackeventname='wPrompt';wPrompt('Message', wPrompt_def_val_callback, 'Title', 'Default Value');">wPrompt</button>
                     </p>
                     <p>Callback Result:<span id="wdvcallback" class="Description callback"></span></p>
                     <!--Placeholder-->
@@ -258,12 +259,12 @@
                         function wPrompt_def_val_callback2(result) {
                             $("#wdvcallback2").text(result);
                             $.wAlert.options.setisPlaceholder(false);
-                            ga && ga('send', 'event', 'Demo', 'callback' , (!!callbackeventname?callbackeventname:"Error"));
-                            ga && ga('send', 'event', 'Demo', 'callback' , 'setisPlaceholder');
+                            ga && ga('send', 'event', 'Demo', 'callback' , (!!window.callbackeventname?window.callbackeventname:"Error"));
+                            ga && ga('send', 'event', 'Demo', 'callback' , 'setisPlaceholder-true');
                         }
                     </script>
                     <p class="buttons">
-                        <button class="wPrompt" onClick="$.wAlert.options.setisPlaceholder(true);wPrompt('Message', wPrompt_def_val_callback2, 'Title', 'Placeholder');">wPrompt</button>
+                        <button class="wPrompt" onClick="window.callbackeventname='wPrompt';$.wAlert.options.setisPlaceholder(true);wPrompt('Message', wPrompt_def_val_callback2, 'Title', 'Placeholder');">wPrompt</button>
                     </p>
                     <p>Callback Result:<span id="wdvcallback2" class="Description callback"></span></p>
                 </div>
